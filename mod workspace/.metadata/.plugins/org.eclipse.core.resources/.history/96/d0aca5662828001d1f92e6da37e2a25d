@@ -1,0 +1,34 @@
+package com.thebizzness.snowballmod;
+
+import com.thebizzness.snowballmod.init.ItemInit;
+
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+@Mod("snowballmod")
+public class SnowballMod {
+	
+	public static final String MOD_ID = "snowballmod";
+	
+	public static final CreativeModeTab SNOWBALL_TAB = new CreativeModeTab(MOD_ID) {
+		
+		@Override
+		@OnlyIn(Dist.CLIENT)
+		public ItemStack makeIcon() {
+			return new ItemStack(ItemInit.BLUE_SNOWBALL.get());
+		}
+	};
+	
+	public SnowballMod() {
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		
+		ItemInit.ITEMS.register(bus);
+		
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+}

@@ -1,0 +1,11 @@
+package com.thebizzness.snowballmod;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+
+@Mod("snowballmod")
+public class SnowballMod {
+	public SnowballMod() {
+		MinecraftForge.EVENT_BUS.register(this);
+	}
+}
